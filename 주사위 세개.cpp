@@ -42,7 +42,7 @@ int main(){
 }
 
 */
-
+/*
 #include <iostream>
 
 using namespace std;
@@ -52,23 +52,45 @@ int main(){
     cin >> a >> b >> c;
     int same = 0;
     int num = 0;
+    int result;
     if(a == b)same++;num = 1;//같은 눈이 2개만 나오는 번호가 몇번인지 num으로 확인
     if(c == b)same++;num = 2;
     if(a == c)same++;num = 3;
     if(same == 3){
-        cout << 10000 + a * 1000;
+        result = 10000 + a * 1000;
     }
 
     if(same == 1) {
-        if(num == 1)cout << 1000 + a * 100;
-        else if(num == 2)cout << 1000 + b * 100;
-        else if(num == 3)cout << 1000 + a * 100;
+        if(num == 1)result = 1000 + a * 100;
+        else if(num == 2)result = 1000 + b * 100;
+        else if(num == 3)result = 1000 + a * 100;
     }
     if(same == 0){
         if(b > a)a = b;
         if(c > a)a = c;
-        cout << a * 100;
+        result = a * 100;
     }
+    cout << result;
     return 0;
 
+}*/
+
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    int a, b, c;
+    cin >> a >> b >> c;
+    int result;
+    if(a == b && a == c)result = 10000 + a * 1000;
+    else if((a == b || a == c) || b == c) {
+        if( a == b)result = 1000 + a * 100;
+        if( c == b)result = 1000 + c * 100;
+    }
+    else result = max(max(a, b), c) * 100;
+
+    cout << result;
+
+    return 0;
 }
