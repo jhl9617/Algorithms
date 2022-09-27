@@ -86,10 +86,12 @@ int main(){
     if(a == b && a == c){
         result = 10000 + a * 1000;}
     else if((a == b || a == c) || b == c) {
-        if( a == b){
+        if(a == b){
             result = 1000 + a * 100;}
-        if( c == b){
+        if(c == b){
             result = 1000 + c * 100;}
+        if(a == c){
+            result = 1000 + a * 100;}
     }
     else result = max(max(a, b), c) * 100;
 
