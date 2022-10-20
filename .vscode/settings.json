@@ -42,5 +42,6 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "빠른 a+b": "cpp"
-    }
+    },
+    "terminal.integrated.sendKeybindingsToShell": false
 }
