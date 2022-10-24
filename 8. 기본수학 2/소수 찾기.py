@@ -10,7 +10,7 @@ for i in numbers:
             break
         if i - j == 1:
             primes.append(i)
-        
+            
 if two == True:
     print(len(primes)+1)
 else:
