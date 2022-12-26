@@ -16,11 +16,11 @@ for i in Bnums:
             print(1)
             brk = True
             break
-        elif i > a[mid]: 
+        elif i > a[mid]:
             low = mid + 1
-        
+
         else:
             high = mid - 1
- 
+
     if brk == False:
         print(0)

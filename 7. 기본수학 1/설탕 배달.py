@@ -30,7 +30,7 @@ for i in range(five*5, -1, -5):
     if i == 0 and brk == False:
         ea = 0
         break
-                
+
 if ea == 0:
     print("-1")
 else:
