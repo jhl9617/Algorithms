@@ -2,14 +2,21 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch as",
+            "request": "launch",
+            "mainClass": "as",
+            "projectName": "Algorithms_2698ed10"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": ["<input.txt"]
-            
+            "args": [
+                "<input.txt"
+            ]
         }
-        
     ]
 }
