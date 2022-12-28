@@ -18,9 +18,7 @@ for i in Bnums:
             break
         elif i > a[mid]:
             low = mid + 1
-
         else:
             high = mid - 1
-
     if brk == False:
         print(0)

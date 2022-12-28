@@ -1,6 +1,7 @@
-T = int(input())
 
+T = int(input())
 for i in range(T):
+    
     stack = []
     inp = input()
     for j in inp:

@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch testJave",
+            "request": "launch",
+            "mainClass": "testJave",
+            "projectName": "Algorithms_2698ed10"
+        },
+        {
+            "type": "java",
             "name": "Launch as",
             "request": "launch",
             "mainClass": "as",
