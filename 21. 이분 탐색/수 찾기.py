@@ -1,7 +1,7 @@
 
 
 n = int(input())
-Anums = list(map(int, input().split()))
+Anums = list(map(int, input().split())) [1, 3, 5, 7, 9, 11, 14, 56]
 m = int(input())
 Bnums = list(map(int, input().split()))
 a = sorted(Anums)
