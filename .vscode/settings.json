@@ -43,5 +43,6 @@
         "typeinfo": "cpp",
         "빠른 a+b": "cpp"
     },
-    "terminal.integrated.sendKeybindingsToShell": false
+    "terminal.integrated.sendKeybindingsToShell": false,
+    "python.analysis.typeCheckingMode": "basic"
 }
