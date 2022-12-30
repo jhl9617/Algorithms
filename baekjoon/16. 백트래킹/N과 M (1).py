@@ -1,13 +1,19 @@
-from itertools import product
+def n_and_m(depth, n, m):
 
-N, M = map(int, input().split())
+  if depth == m:
+    print(' '.join(map(str, answer)))
 
-ans = []
+  for i in range(1, n+1):
+    
+    if not visited[i]:
+      visited[i] = True
+      answer.append(i)
+      n_and_m(depth+1, n, m)
+      visited[i] = False
+      answer.pop()
 
-def back():
-    if len(ans) == M:   #배열의 길이를 확인
-        print(" ".join(map(str, ans)))  #1 2 3 이런 상태로 출력
-        return
-    for i in range(1, N + 1):
-        if i not in ans:
-            ans.append(i)
+n, m = map(int, input().split())
+visited = [False] * (n+1)
+answer = []
+
+n_and_m(0, n, m)
