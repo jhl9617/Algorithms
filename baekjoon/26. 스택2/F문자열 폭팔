@@ -1,0 +1,5 @@
+st = input()
+bomb = input()
+
+for i in st:
+    print(i)

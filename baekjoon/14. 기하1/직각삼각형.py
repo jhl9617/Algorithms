@@ -7,3 +7,5 @@ while True:
     if numbers[0]**2 + numbers[1]**2 == maxi**2:
         print("right")
     else:print("wrong")
+
+    
