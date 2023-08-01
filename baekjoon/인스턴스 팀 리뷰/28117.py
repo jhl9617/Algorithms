@@ -43,8 +43,8 @@ while i < N:
 
     i += 1
 
-        
-print (answer)
+print(a[0:4])
+# print (answer)
 
 
 

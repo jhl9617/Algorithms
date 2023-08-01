@@ -2,31 +2,52 @@
 
 # 피보나치 수 6
 
-# 피보나치 수를 나눈 나머지를 구하는 문제
+#  1 1 2 3 5 8 13 21 34 55 89 144 233 377 610
 
-# 피보나치 수를 나눈 나머지는 주기를 가지고 있다.
+# 아주 큰 피보나치를 빠르게 구하려면 행렬의 거듭제곱을 이용
+# F n+2 = (1 1) (F n+1)
+# F n+1 = (1 0) (F n  )
 
-# 피보나치 숫자 사이의 간격
-# 1 1 2 3 5 8 13 21 34 55 89 144 233 377 ...
-#  0 1 1 2 3 5  8 13 21 34 55  89 144 233 ...
+# (1 1)^n
+# (1 0)
+#   =
+# (F n+1 F n  )
+# (F n   F n-1)
 
-# n번째 + n+1번째 = n+2번째
 
-
+import sys
+input = sys.stdin.readline
 
 n = int(input())
+p = 1000000007
 
-def fibo(n):
-    print('n: ', n)
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
+# n번 째 피보나치 수는 행렬 (1 1, 1 0)^n 의 1행 2열 값이다(단, n>=1일때)
+
+def mul(A, B):
+    n = len(A)
+    Z = [[0]*n for _ in range(n)]
+    
+    for row in range(n):
+        for col in range(n):
+            e = 0
+            for i in range(n):
+                e += A[row][i] * B[i][col]
+            Z[row][col] = e % p
+            
+    return Z
+
+def square(A, k):
+    if k == 1:
+        for x in range(len(A)):
+            for y in range(len(A)):
+                A[x][y] %= p
+        return A
+    
+    tmp = square(A, k//2)
+    if k % 2:
+        return mul(mul(tmp, tmp), A)
     else:
-        temp = fibo(n//2)
-        if n%2 == 0:
-            return (temp*temp)%1000000007
-        else:
-            return (temp*temp*fibo(n))%1000000007
-        
-print(fibo(n))
+        return mul(tmp, tmp)
+    
+fib_matrix = [[1, 1], [1, 0]]
+print(square(fib_matrix, n)[0][1])
