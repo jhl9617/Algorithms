@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Java_inputs",
+      "request": "launch",
+      "mainClass": "Java_inputs",
+      "projectName": "Algorithms_fe810eb8"
+    },
+    {
+      "type": "java",
       "name": "Launch testJave",
       "request": "launch",
       "mainClass": "testJave",
