@@ -22,3 +22,4 @@ def func(s, pos):
 N = int(input())
 s = input()
 print(func(s, 0))
+

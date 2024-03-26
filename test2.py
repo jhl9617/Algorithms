@@ -1,41 +1,54 @@
-from collections import deque
+# https://www.acmicpc.net/problem/1461
+# 도서관
+import sys
 
-N = int(input())
-adj = [[] for _ in range(N+1)]
-group = [0] * (N+1)  # 원숭이들을 나눌 그룹(1 또는 -1), 0은 아직 그룹이 정해지지 않음을 의미
+n,m = map(int,input().split())
+locations = list(map(int,input().split()))
+pos = []
+nag = []
+locations.sort()
 
-# 그래프 구성
-for i in range(1, N+1):
-    data = list(map(int, input().split()))
-    for enemy in data[1:]:
-        adj[i].append(enemy)
-        adj[enemy].append(i)  # 무방향 그래프
+# 양수와 음수 분리
+for i in locations:
+    if i > 0:
+        pos.append(i)
+    else:
+        nag.append(i)
 
-def bfs(start):
-    q = deque([start])
-    group[start] = 1  # 시작 정점을 그룹 1에 할당
-    while q:
-        cur = q.popleft()
-        for neighbor in adj[cur]:
-            if group[neighbor] == 0:  # 아직 방문하지 않은 정점
-                group[neighbor] = -group[cur]  # 이웃한 정점은 다른 그룹에 할당
-                q.append(neighbor)
-            elif group[neighbor] == group[cur]:  # 이미 방문한 정점이면서 같은 그룹이라면 이분 그래프가 아님
-                return False
-    return True
+# 마지막 책 m개의 위치
+finalLocation = []
 
-# 모든 정점에 대해 BFS 수행
-is_bipartite = True
-for i in range(1, N+1):
-    if group[i] == 0:  # 아직 방문하지 않은 정점에 대해서만 BFS 수행
-        if not bfs(i):
-            is_bipartite = False
-            break
-
-if is_bipartite:
-    first_prison = [i for i in range(1, N+1) if group[i] == 1]
-    second_prison = [i for i in range(1, N+1) if group[i] == -1]
-    print(len(first_prison), *first_prison)
-    print(len(second_prison), *second_prison)
+# 제인 먼 위치가 양수인지 음수인지 플래그
+posOrNag = True
+if abs(pos[-1]) > abs(nag[0]):
+    # 가장 큰 수부터 m개 묶어서 이동
+    finalLocation.append(pos[0:m])
+    # pos[0:m] 원소 삭제
+    del pos[0:m]
+    
 else:
-    print("조건에 맞게 원숭이들을 나눌 수 없습니다.")
+    # 가장 작은 수부터 m개 묶어서 이동
+    finalLocation.append(nag[0:m])
+    del nag[0:m]
+    posOrNag = False
+
+# pos, nag 절대값이 큰게 앞으로 오도록 정렬
+pos.sort(reverse=True)
+nag.sort()
+
+# 결과값
+distance = 0
+
+# 각 pos, nag의 원소들을 m개씩 묶어서 이동
+for i in range(0,len(pos),m):
+    distance += abs(pos[i])*2
+for i in range(0,len(nag),m):
+    distance += abs(nag[i])*2
+    
+# 마지막 책을 놓는 위치로 이동
+if posOrNag:
+    distance += finalLocation[0][-1]
+else:
+    distance -= finalLocation[0][0]
+
+print(distance)
